@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My First Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #007acc;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+ <script src="https://cjrtnc.leaningtech.com/4.2/loader.js"></script>
+</head>
+<body>
+  <h1>🚀 Welcome to My Website</h1>
+  <p>This is a simple webpage hosted with <strong>GitHub Pages</strong>.</p>
+  <p>
+    <a href="https://github.com/">Visit my GitHub</a>
+     <a href="index.html">Home</a>
+  </p>
+</body>
+<script>
+      (async function () {
+        await cheerpjInit({version: 17});
+        cheerpjCreateDisplay(400, 600);
+        await cheerpjRunJar("/app/mygame.jar", "no.uib.inf101.tetris.Main", "cheerpj-root", {direct:true});
+      })();
+    </script>
+</html>
