@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My First Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #007acc;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+ <script src="https://cjrtnc.leaningtech.com/4.2/loader.js"></script>
+</head>
+<body>
+  <?php include 'navbar.php'?>
+  <h1>Tetris</h1>
+</body>
+<script>
+      (async function () {
+        await cheerpjInit({version: 17});
+        cheerpjCreateDisplay(400, 600);
+        await cheerpjRunJar("/app/mygame.jar", "no.uib.inf101.tetris.Main", "cheerpj-root", {direct:true});
+      })();
+    </script>
+</html>
