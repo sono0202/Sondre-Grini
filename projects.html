@@ -26,10 +26,15 @@
  <script src="https://cjrtnc.leaningtech.com/4.2/loader.js"></script>
 </head>
 <body>
-  <?php include 'navbar.php'?>
   <h1>Tetris</h1>
 </body>
 <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+      });
+ 
       (async function () {
         await cheerpjInit({version: 17});
         cheerpjCreateDisplay(400, 600);
