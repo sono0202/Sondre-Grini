@@ -14,7 +14,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="photos.html">Photos</a>
+            <a class="nav-link" href="photos.php">Photos</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" 
@@ -22,7 +22,7 @@
               Projects
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="projects.html">Tetris</a></li>
+              <li><a class="dropdown-item" href="projects.php">Tetris</a></li>
             </ul>
           </li>
         </ul>
