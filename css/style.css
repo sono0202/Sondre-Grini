@@ -1,0 +1,262 @@
+@font-face {
+  font-family: "Cordata"; 
+  src: url('fonts/Px437_Cordata_PPC-400.woff2') format('woff2');
+}
+
+body{
+  background-color: #f1f1f1;;
+  font-family: "Cordata", monospace;
+  padding-top: 55px; /* match navbar height */
+}
+
+/* Navbar  */
+.custom-navbar {
+  background-color: #f1f1f1; /*#3d679e;*/
+}
+
+.custom-navbar .nav-link {
+  color: #1f2937;
+  font-size: 1rem;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #576d89;
+  transition: color 0.25s ease;
+}
+
+.navbar-brand{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+
+.navbar-brand span{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.logo-normal{
+  width: 50px;
+  height: 50px;
+  display: inline;
+  transform: translate(0%, -12%)
+}
+.logo-hover {
+  width: 50px;
+  height: 50px;
+  display: none;
+  transform: translate(0%, -12%);
+}
+
+.navbar-brand:hover .logo-normal {
+  display: none;
+}
+
+.navbar-brand:hover .logo-hover {
+  display: inline;
+}
+
+
+
+
+/* Hero section */
+
+.hero-section {
+      background-image: url('images/DSC04167.JPG'); 
+      background-size: cover;
+      background-position: center;
+      height: 100vh; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white; 
+    }
+
+/* Hero text */
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+  padding-left: 1rem;
+}
+.hero-section p{
+   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+   padding-left: 1rem;
+}
+#service{
+ background-color: #79afc9;
+ padding: 1rem;
+}
+
+#image{
+ background-color: #79afc9;
+ padding: 1rem;
+}
+#project{
+ padding: 1rem;
+}
+
+#gallery img{
+  width: 100%;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+
+article{
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+#header {
+  text-align: center;
+  padding:2rem;
+}
+
+.img-container {
+  width: 100%;          
+  height: 370px;        
+  overflow: hidden;     
+}
+
+.img-container img {
+  width: 100%;          
+  height: 100%;         
+  object-fit: cover;    
+  object-position: center;
+  display: block;      
+}
+.img-container-abt{
+  width: 100%;          
+  height: 100%;        
+  overflow: hidden;
+  padding: 2rem; 
+}
+.img-container-srv img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.img-container-srv img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+
+@media (min-width: 768px) {
+  .hero-section h1 {
+    font-size: 4rem;
+    
+  }
+
+  .nav-link:hover {
+    color: #576d89;
+    transition: color 0.25s ease;
+    transform: scale(1.10);
+  }
+  .navbar-brand{
+    margin-left: 3rem;
+  
+}
+.navbar-collapse{
+    padding-right: 3rem;
+  }
+
+  #contact{
+  padding-top: 6rem;
+}
+.navbar{
+  padding: 1rem;
+}
+.flex-grow-1{
+margin-top: 1rem;
+}
+.img-container-srv img {
+  max-width: 70%;
+  height: auto;
+  display: block;
+  margin: 0 auto;  
+}
+
+
+}
+
+@media (min-width: 1200px) {
+  .hero-section h1 {
+    font-size: 6rem;
+    
+  }
+  .hero-section p{
+    font-size: 2rem;
+ 
+  }
+  .custom-navbar .nav-link:hover {
+    color: #576d89;
+    transition: color 0.25s ease;
+    transform: scale(1.10);
+  }
+  
+  .navbar-brand{
+    margin-left: 6rem;
+  }
+  .navbar-collapse{
+    padding-right: 4rem;
+  }
+
+.navbar{
+  padding: 1.5rem;
+}
+.flex-grow-1{
+margin-top: 2rem;
+}
+.img-container-srv img {
+  max-width: 60%;
+  height: auto;
+  display: block;
+  margin: 0 auto;  /* centers horizontally */
+}
+
+}
+
+/* navbar logo
+.brand-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+*/
+
+/* footer */
+.site-footer {
+  background-color: #e8e8e8;
+  color: #1f2937;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.site-footer a {
+  display: inline-flex;
+  list-style: none;
+  text-decoration: none;
+}
+
+
+.site-footer .footer-link {
+  color: #1f2937;
+  font-size: 1.8rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.site-footer .footer-link:hover {
+  color: #576d89;
+  transform: scale(1.15);
+}
+
+
