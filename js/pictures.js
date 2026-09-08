@@ -1,5 +1,5 @@
-const owner = "user";
-  const repo = "repo";
+const owner = "sono0202";
+  const repo = "Sondre-Grini";
     const folder = "images/food";
     
 
