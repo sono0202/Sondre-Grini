@@ -81,7 +81,7 @@ async function loadImages() {
     // Now create the gallery in sorted order
     for (const { file, date } of images) {
       const div2 = document.createElement("div");
-      div2.className = "col-12 col-md-6 col-xl-4";
+      div2.className = "col-12 col-md-6 col-xl-4 image";
 
       const article = document.createElement("article");
       article.setAttribute("data-aos", "fade-up");
