@@ -1,7 +1,6 @@
 const owner = "sono0202";
   const repo = "Sondre-Grini";
-    const folder = "images/food";
-    
+const folder = "images/food";
 
 const gallery = document.getElementById("gallery");
 
@@ -18,96 +17,109 @@ async function loadImages() {
 
     const files = await response.json();
 
-    files
-  .filter(file =>
-    file.type === "file" &&
-    /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(file.name)
-  )
-  .forEach(async file => {
+    const imageFiles = files.filter(file =>
+      file.type === "file" &&
+      /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(file.name)
+    );
 
-    const div = document.createElement("div");
-    div.className = "row py-4";
-    div.id = "image";
+    // Get metadata for every image first
+    const images = await Promise.all(
+      imageFiles.map(async (file) => {
+        let date = null;
 
-    const div1 = document.createElement("div");
-    div1.className = "col-md-2";
+        try {
+          // SVGs generally don't contain EXIF metadata
+          if (!/\.svg$/i.test(file.name)) {
+            const data = await exifr.parse(file.download_url, {
+              tiff: true,
+              exif: true,
+              xmp: true
+            });
 
-    const div2 = document.createElement("div");
-    div2.className = "col-md-8 mt-4";
+            const exifDate =
+              data?.DateTimeOriginal ||
+              data?.CreateDate ||
+              data?.DateTimeCreated ||
+              data?.ModifyDate ||
+              data?.DateTime;
 
-    const article = document.createElement("article");
+            if (exifDate) {
+              const parsedDate =
+                exifDate instanceof Date
+                  ? exifDate
+                  : new Date(exifDate);
 
-    const div3 = document.createElement("div");
-    div3.className = "col-md-2";
+              if (!isNaN(parsedDate.getTime())) {
+                date = parsedDate;
+              }
+            }
+          }
+        } catch (metadataError) {
+          console.error(
+            `Could not extract metadata from ${file.name}:`,
+            metadataError
+          );
+        }
 
-    const img = document.createElement("img");
-    img.src = file.download_url;
-    img.alt = file.name;
-    img.loading = "lazy";
-    article.setAttribute("data-aos", "fade-up");
+        return {
+          file,
+          date
+        };
+      })
+    );
 
-    const metadata = document.createElement("p");
+    // Sort newest first
+    images.sort((a, b) => {
+      // Images without dates go to the end
+      if (!a.date && !b.date) return 0;
+      if (!a.date) return 1;
+      if (!b.date) return -1;
 
-    article.appendChild(metadata);
-    article.appendChild(img);
-    div2.appendChild(article);
-    div.appendChild(div1);
-    div.appendChild(div2);
-    div.appendChild(div3);
+      return b.date - a.date;
+    });
 
-    gallery.appendChild(div);
+    // Now create the gallery in sorted order
+    for (const { file, date } of images) {
+      const div2 = document.createElement("div");
+      div2.className = "col-12 col-md-6 col-xl-4";
 
-    try {
+      const article = document.createElement("article");
+      article.setAttribute("data-aos", "fade-up");
 
-      // SVGs generally don't contain EXIF metadata
+      const img = document.createElement("img");
+      img.src = file.download_url;
+      img.alt = file.name;
+      img.loading = "lazy";
+
+      const metadata = document.createElement("p");
+
       if (/\.svg$/i.test(file.name)) {
         metadata.innerHTML = `
           <small class="text-muted">
             SVG — no EXIF metadata.
           </small>
         `;
-        return;
-      }
-
-      const data = await exifr.parse(file.download_url, {
-        tiff: true,
-        
-      });
-
-    
-      const exifDate = data.DateTimeOriginal;
-
-      if (exifDate instanceof Date) {
-        metadata.innerHTML = ` ${exifDate.toLocaleString("en-GB", {
+      } else if (date) {
+        metadata.textContent = date.toLocaleDateString("en-GB", {
           day: "2-digit",
           month: "long",
           year: "numeric"
-        })}`;
+        });
+      } else {
+        metadata.textContent = "No date metadata.";
       }
 
-      
+      article.appendChild(metadata);
+      article.appendChild(img);
 
-    } catch (metadataError) {
-
-      console.error(
-        `Could not extract metadata from ${file.name}:`,
-        metadataError
-      );
-
-      metadata.innerHTML = `
-        <small class="text-danger">
-          Could not read metadata.
-        </small>
-      `;
+      div2.appendChild(article);
+      gallery.appendChild(div2);
     }
-  });
-
 
   } catch (error) {
-    console.error("Could not load images:", error);
+    console.error(error);
     gallery.textContent = "Unable to load images.";
   }
 }
-console.log("exifr:", exifr);
 
 loadImages();

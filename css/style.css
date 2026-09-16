@@ -91,7 +91,7 @@ body{
  padding: 1rem;
 }
 
-#image{
+.image{
  background-color: #79afc9;
  padding: 1rem;
 }
@@ -103,8 +103,10 @@ body{
   width: 100%;
   background-color: #f1f1f1;
   border-radius: 10px;
+  aspect-ratio: 1 / 1.2;
+  object-fit: cover;
+  object-position: 50% 70%;
 }
-
 
 article{
   background-color: #f1f1f1;
@@ -153,7 +155,6 @@ article{
 @media (min-width: 768px) {
   .hero-section h1 {
     font-size: 4rem;
-    
   }
 
   .nav-link:hover {
@@ -259,4 +260,10 @@ margin-top: 2rem;
   transform: scale(1.15);
 }
 
+
+#cheerpj-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
